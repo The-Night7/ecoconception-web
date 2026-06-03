@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Éco-Conception Web — CYU · MI3-5</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green-900: #0a1a0d;
+    --green-800: #122b18;
+    --green-700: #1a4024;
+    --green-600: #215430;
+    --green-500: #2d6e3e;
+    --green-400: #3d8a52;
+    --green-300: #5aaa6f;
+    --green-200: #8ecb9e;
+    --green-100: #c4e8ce;
+    --green-50: #edf7f0;
+    --lime: #a8d84a;
+    --cream: #f4f0e8;
+    --ink: #0e1a11;
+    --muted: #4a5e4f;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(244,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(33,84,48,0.12);
+  }
+  .nav-logo {
+    font-family: var(--mono); font-size: 0.8rem; color: var(--green-600);
+    letter-spacing: 0.08em; font-weight: 500;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; color: var(--muted); text-decoration: none;
+    font-weight: 400; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-600); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 50%, #c4e8ce33 0%, transparent 70%);
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem 3rem 4rem 4rem;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--green-500);
+    background: var(--green-50); border: 1px solid var(--green-200);
+    border-radius: 2rem; padding: 0.3rem 0.9rem; margin-bottom: 1.5rem;
+    letter-spacing: 0.06em; width: fit-content;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-400); flex-shrink: 0;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: 4.5rem; line-height: 1.05;
+    color: var(--green-800); margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .hero-title em { font-style: italic; color: var(--green-500); }
+  .hero-subtitle {
+    font-size: 1.05rem; color: var(--muted); line-height: 1.7;
+    max-width: 460px; margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--green-700); color: var(--green-50);
+    padding: 0.75rem 1.75rem; border-radius: 0.375rem;
+    font-size: 0.88rem; font-weight: 500; text-decoration: none;
+    letter-spacing: 0.02em; transition: background 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--green-600); }
+  .btn-ghost {
+    color: var(--green-600); font-size: 0.88rem; font-weight: 500;
+    text-decoration: none; display: flex; align-items: center; gap: 0.35rem;
+  }
+  .btn-ghost:hover { color: var(--green-500); }
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 4rem 4rem 4rem 0; position: relative; z-index: 1;
+  }
+  .hero-card {
+    background: var(--green-800); color: var(--green-50);
+    border-radius: 1.25rem; padding: 2.5rem;
+    width: 100%; max-width: 380px;
+    box-shadow: 0 32px 80px rgba(10,26,13,0.25);
+    position: relative; overflow: hidden;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: rgba(168,216,74,0.12);
+  }
+  .hero-card-label {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--green-300); margin-bottom: 1.25rem; text-transform: uppercase;
+  }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .stat-box {
+    background: rgba(255,255,255,0.06); border-radius: 0.75rem;
+    padding: 1rem; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-value {
+    font-family: var(--serif); font-size: 2rem; color: var(--lime);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.72rem; color: var(--green-200); margin-top: 0.25rem; font-weight: 300; }
+  .hero-card-team {
+    font-size: 0.78rem; color: var(--green-300); margin-top: 1.5rem;
+    padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.9; font-weight: 300;
+  }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    color: var(--green-500); text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 1px; background: var(--green-400);
+  }
+  .section-title {
+    font-family: var(--serif); font-size: 2.8rem; color: var(--green-800);
+    line-height: 1.15; font-weight: 400;
+  }
+
+  /* PROBLEM */
+  .problem { background: var(--green-50); }
+  .problem-inner { max-width: 1100px; margin: 0 auto; }
+  .problem-header { max-width: 640px; margin-bottom: 3.5rem; }
+  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .problem-card {
+    background: #fff; border-radius: 1rem; padding: 1.75rem;
+    border: 1px solid var(--green-100);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,26,13,0.08); }
+  .problem-card-icon {
+    width: 42px; height: 42px; border-radius: 0.625rem;
+    background: var(--green-50); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; font-size: 1.4rem;
+  }
+  .problem-card h3 { font-size: 0.95rem; font-weight: 500; color: var(--green-800); margin-bottom: 0.5rem; }
+  .problem-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+  /* ANALYSIS */
+  .analysis { background: var(--cream); }
+  .analysis-inner { max-width: 1100px; margin: 0 auto; }
+  .analysis-header { margin-bottom: 3.5rem; }
+  .analysis-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .analysis-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.25rem; font-weight: 300; }
+  .emissions-panel {
+    background: var(--green-800); border-radius: 1.25rem; padding: 2rem;
+    color: var(--green-50);
+  }
+  .emissions-title { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--green-300); margin-bottom: 1.5rem; }
+  .emission-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+  .emission-bar-bg { flex: 1; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+  .emission-bar { height: 100%; border-radius: 4px; background: var(--lime); }
+  .emission-label { font-size: 0.82rem; color: var(--green-200); width: 90px; flex-shrink: 0; font-weight: 300; }
+  .emission-val { font-family: var(--mono); font-size: 0.82rem; color: var(--lime); width: 60px; text-align: right; flex-shrink: 0; }
+  .emission-total { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .emission-total-val { font-family: var(--serif); font-size: 2.5rem; color: var(--lime); }
+  .emission-total-label { font-size: 0.8rem; color: var(--green-200); font-weight: 300; }
+
+  /* SOLUTIONS */
+  .solutions { background: var(--green-900); color: var(--green-50); }
+  .solutions .section-label { color: var(--green-300); }
+  .solutions .section-label::before { background: var(--green-400); }
+  .solutions .section-title { color: var(--green-50); }
+  .solutions-inner { max-width: 1100px; margin: 0 auto; }
+  .solutions-header { max-width: 580px; margin-bottom: 3.5rem; }
+  .solutions-header p { font-size: 0.95rem; color: var(--green-200); margin-top: 1rem; font-weight: 300; }
+  .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .solution-card {
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.75rem;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .solution-card:hover { border-color: rgba(168,216,74,0.4); background: rgba(168,216,74,0.04); }
+  .solution-card.featured { border-color: var(--lime); }
+  .solution-card.featured::after {
+    content: 'Solution retenue';
+    position: absolute; top: 1rem; right: 1rem;
+    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em;
+    background: var(--lime); color: var(--green-900);
+    padding: 0.25rem 0.6rem; border-radius: 2rem;
+  }
+  .solution-num { font-family: var(--mono); font-size: 0.75rem; color: var(--green-500); margin-bottom: 1rem; }
+  .solution-card h3 { font-size: 1rem; font-weight: 500; color: var(--green-50); margin-bottom: 0.75rem; }
+  .solution-card p { font-size: 0.85rem; color: var(--green-300); line-height: 1.65; font-weight: 300; }
+  .smart-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+  .smart-tag {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.04em;
+    background: rgba(168,216,74,0.12); color: var(--lime);
+    padding: 0.2rem 0.55rem; border-radius: 0.25rem;
+  }
+  .smart-tag.no { background: rgba(255,255,255,0.06); color: var(--green-400); }
+
+  /* RESULTS */
+  .results { background: var(--cream); }
+  .results-inner { max-width: 1100px; margin: 0 auto; }
+  .results-header { margin-bottom: 3.5rem; }
+  .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem; }
+  .result-metric {
+    background: var(--green-50); border: 1px solid var(--green-100);
+    border-radius: 1rem; padding: 1.5rem; text-align: center;
+  }
+  .result-metric-val { font-family: var(--serif); font-size: 2.2rem; color: var(--green-700); }
+  .result-metric-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; font-weight: 300; }
+  .comparison-table {
+    width: 100%; border-collapse: collapse; font-size: 0.88rem;
+    background: #fff; border-radius: 1rem; overflow: hidden;
+    border: 1px solid var(--green-100);
+  }
+  .comparison-table th {
+    background: var(--green-800); color: var(--green-100);
+    padding: 1rem 1.25rem; text-align: left; font-weight: 500; font-size: 0.82rem;
+    letter-spacing: 0.02em;
+  }
+  .comparison-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--green-50); color: var(--muted); }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table tr:hover td { background: var(--green-50); }
+  .badge {
+    display: inline-block; font-size: 0.72rem; padding: 0.2rem 0.6rem;
+    border-radius: 2rem; font-weight: 500;
+  }
+  .badge-green { background: #dcf5e4; color: var(--green-700); }
+  .badge-red { background: #fce8e8; color: #b33; }
+
+  /* TEAM */
+  .team { background: var(--green-50); }
+  .team-inner { max-width: 1100px; margin: 0 auto; }
+  .team-header { max-width: 540px; margin-bottom: 3.5rem; }
+  .team-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+  .team-card {
+    background: #fff; border-radius: 1rem; padding: 1.25rem 1rem; text-align: center;
+    border: 1px solid var(--green-100); transition: transform 0.2s;
+  }
+  .team-card:hover { transform: translateY(-3px); }
+  .team-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--green-700); color: var(--green-100);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 0.72rem; margin: 0 auto 0.75rem;
+    font-weight: 500; letter-spacing: 0.03em;
+  }
+  .team-name { font-size: 0.82rem; font-weight: 500; color: var(--green-800); line-height: 1.3; }
+  .team-role { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; font-weight: 300; }
+  .energy-section { margin-top: 3.5rem; }
+  .energy-title { font-size: 1rem; font-weight: 500; color: var(--green-800); margin-bottom: 1.5rem; }
+  .energy-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+  .energy-row { display: flex; align-items: center; gap: 1rem; }
+  .energy-name { width: 90px; font-size: 0.8rem; color: var(--muted); font-weight: 300; }
+  .energy-track { flex: 1; height: 10px; background: var(--green-100); border-radius: 5px; overflow: hidden; }
+  .energy-fill { height: 100%; border-radius: 5px; background: var(--green-500); transition: width 0.8s ease; }
+  .energy-score { font-family: var(--mono); font-size: 0.78rem; color: var(--green-600); width: 36px; text-align: right; }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-900); color: var(--green-300);
+    padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-left { font-size: 0.85rem; line-height: 1.8; font-weight: 300; }
+  .footer-left strong { color: var(--green-100); font-weight: 500; }
+  .footer-right { font-family: var(--mono); font-size: 0.7rem; color: var(--green-600); letter-spacing: 0.06em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.22s; }
+  .delay-3 { animation-delay: 0.34s; }
+  .delay-4 { animation-delay: 0.46s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 4rem 1.5rem 3rem; }
+    .hero-title { font-size: 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .problem-grid, .solutions-grid { grid-template-columns: 1fr; }
+    .analysis-split { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+    footer { padding: 2rem 1.5rem; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MI3-5 · CY TECH · 2024–25</div>
+  <ul class="nav-links">
+    <li><a href="#probleme">Problème</a></li>
+    <li><a href="#analyse">Analyse</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#resultats">Résultats</a></li>
+    <li><a href="#equipe">Équipe</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-tag fade-up">Humanité & Design · Projet HD</div>
+    <h1 class="hero-title fade-up delay-1">Éco-Conception <em>Web</em></h1>
+    <p class="hero-subtitle fade-up delay-2">Réduire l'impact environnemental de l'hébergement du site de CY Cergy Paris Université grâce à une stratégie d'optimisation numérique durable.</p>
+    <div class="hero-cta fade-up delay-3">
+      <a href="#solutions" class="btn-primary">Voir les solutions →</a>
+      <a href="#resultats" class="btn-ghost">Résultats obtenus ↓</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up delay-4">
+    <div class="hero-card">
+      <div class="hero-card-label">Impact mesuré · EcoIndex</div>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value">−51%</div>
+          <div class="stat-label">Émissions CO₂ / visite</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">1 Ko</div>
+          <div class="stat-label">Taille optimisée (vs 332 Ko)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">48</div>
+          <div class="stat-label">Lignes de code (vs 8 965)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">1,12g</div>
+          <div class="stat-label">CO₂ / visite (optimisé)</div>
+        </div>
+      </div>
+      <div class="hero-card-team">
+        Ibrahim Fridjine · Maria-Danielle Boula<br>
+        Myriam Bensaïd · Tom Jaffrain
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section class="problem" id="probleme">
+  <div class="problem-inner">
+    <div class="problem-header">
+      <div class="section-label">Contexte</div>
+      <h2 class="section-title">Pourquoi agir<br>sur le numérique ?</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-card-icon">🌍</div>
+        <h3>4 % de l'empreinte carbone mondiale</h3>
+        <p>Le secteur du numérique représente aujourd'hui environ 4 % des émissions mondiales de CO₂ — autant que l'aviation civile. La moitié vient de la fabrication des appareils, l'autre de leur alimentation électrique.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">🌐</div>
+        <h3>129,6 kg CO₂ / an pour le site de CYU</h3>
+        <p>Avec 10 000 visites mensuelles et 1,08 g de CO₂ émis par visite, le site actuel de CY Cergy Paris Université génère près de 130 kg de CO₂ par an. Un gisement d'amélioration direct et mesurable.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">⚖️</div>
+        <h3>Enjeux politiques & réglementaires</h3>
+        <p>La loi REEN, le référentiel RGAA et les certifications Green Label Code posent un cadre légal croissant. Les universités publiques ont une responsabilité exemplaire dans la transition numérique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYSE -->
+<section class="analysis" id="analyse">
+  <div class="analysis-inner">
+    <div class="analysis-header">
+      <div class="section-label">Diagnostic</div>
+      <h2 class="section-title">État des lieux du site CYU</h2>
+    </div>
+    <div class="analysis-split">
+      <div class="analysis-text">
+        <p>La problématique affinée : <strong>« Quelle stratégie réaliste d'éco-conception peut être mise en œuvre pour réduire l'impact environnemental du site internet de CYU tout en maximisant les bénéfices économiques et sociaux de manière durable ? »</strong></p>
+        <p>En analysant le code HTML du site actuel via l'outil EcoIndex et GTMetrix, nous avons mesuré l'écart considérable entre sa version actuelle — 8 965 lignes de code, 332 Ko, images lourdes — et ce qu'une version éco-conçue pourrait représenter.</p>
+        <p>La méthode SMART nous a permis de structurer trois pistes de résolution : hébergeur écoresponsable, réduction de l'empreinte utilisateur, et optimisation du code. Seule la première et la troisième sont à la fois spécifiques, mesurables, atteignables et réalistes.</p>
+        <p>Le modèle de Kate Raworth (Donut Économique) a guidé notre contextualisation : le projet touche simultanément les plafonds écologiques (changement climatique, énergie) et les planchers sociaux (éducation, inclusion numérique, réseaux).</p>
+      </div>
+      <div class="emissions-panel">
+        <div class="emissions-title">ÉMISSIONS CO₂ · COMPARATIF</div>
+        <div class="emission-row">
+          <span class="emission-label">Site actuel</span>
+          <div class="emission-bar-bg"><div class="emission-bar" style="width: 100%; background: #e26060;"></div></div>
+          <span class="emission-val">1,08 g</span>
+        </div>
+        <div class="emission-row">
+          <span class="emission-label">Après images</span>
+          <div class="emission-bar-bg"><div class="emission-bar" style="width: 55%; background: #e0a050;"></div></div>
+          <span class="emission-val">0,60 g</span>
+        </div>
+        <div class="emission-row">
+          <span class="emission-label">Code minimisé</span>
+          <div class="emission-bar-bg"><div class="emission-bar" style="width: 9%; background: var(--lime);"></div></div>
+          <span class="emission-val">&lt;0,01 g</span>
+        </div>
+        <div class="emission-row">
+          <span class="emission-label">EcoIndex opt.</span>
+          <div class="emission-bar-bg"><div class="emission-bar" style="width: 52%; background: var(--lime);"></div></div>
+          <span class="emission-val">1,12 g</span>
+        </div>
+        <div class="emission-total">
+          <div class="emission-total-val">−51 %</div>
+          <div class="emission-total-label">de réduction atteinte · version optimisée vs version actuelle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="solutions-inner">
+    <div class="solutions-header">
+      <div class="section-label">Pistes de résolution</div>
+      <h2 class="section-title">Trois stratégies évaluées</h2>
+      <p>Chaque piste a été évaluée selon les critères SMART. Deux ont été retenues et combinées dans notre solution finale.</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="solution-card featured">
+        <div class="solution-num">01</div>
+        <h3>Hébergeur écoresponsable</h3>
+        <p>Migrer vers un hébergeur alimenté aux énergies renouvelables (o2switch, Infomaniak, Planet Hoster, Ex2). Délai estimé : 2 à 3 mois. Mesurable via l'empreinte carbone du datacenter.</p>
+        <div class="smart-tags">
+          <span class="smart-tag">S ✓</span>
+          <span class="smart-tag">M ✓</span>
+          <span class="smart-tag">A ✓</span>
+          <span class="smart-tag">R ✓</span>
+          <span class="smart-tag">T ✓</span>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-num">02</div>
+        <h3>Réduction côté utilisateur</h3>
+        <p>Agir sur les comportements de navigation pour limiter la consommation. Non retenue : il est impossible de forcer les utilisateurs à consommer moins, et la temporalité est difficile à définir.</p>
+        <div class="smart-tags">
+          <span class="smart-tag no">S ✗</span>
+          <span class="smart-tag">M ✓</span>
+          <span class="smart-tag">A ✓</span>
+          <span class="smart-tag no">R ✗</span>
+          <span class="smart-tag no">T ✗</span>
+        </div>
+      </div>
+      <div class="solution-card featured">
+        <div class="solution-num">03</div>
+        <h3>Optimisation du code</h3>
+        <p>Minimisation du HTML/CSS/JS et compression des images. Passage de 332 Ko à 1 Ko. Réduction de 99,7 % du poids de la page, sans modifier le contenu visible.</p>
+        <div class="smart-tags">
+          <span class="smart-tag">S ✓</span>
+          <span class="smart-tag">M ✓</span>
+          <span class="smart-tag">A ✓</span>
+          <span class="smart-tag">R ✓</span>
+          <span class="smart-tag">T ✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSULTATS -->
+<section class="results" id="resultats">
+  <div class="results-inner">
+    <div class="results-header">
+      <div class="section-label">Résultats</div>
+      <h2 class="section-title">Ce que nous avons accompli</h2>
+    </div>
+    <div class="results-grid">
+      <div class="result-metric">
+        <div class="result-metric-val">−51 %</div>
+        <div class="result-metric-label">Émissions par visite</div>
+      </div>
+      <div class="result-metric">
+        <div class="result-metric-val">332→1</div>
+        <div class="result-metric-label">Ko (poids du code)</div>
+      </div>
+      <div class="result-metric">
+        <div class="result-metric-val">8 965→48</div>
+        <div class="result-metric-label">Lignes de code</div>
+      </div>
+      <div class="result-metric">
+        <div class="result-metric-val">8 mois</div>
+        <div class="result-metric-label">Délai de déploiement</div>
+      </div>
+    </div>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Impact technique</th>
+          <th>Effet utilisateur</th>
+          <th>Bénéfice</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Minimisation du code HTML/CSS/JS</strong></td>
+          <td>332 Ko → 1 Ko · 0,30 g → &lt;0,01 g CO₂</td>
+          <td>Chargement plus rapide, infos mises en avant</td>
+          <td>Accessibilité renforcée, version ultra-sobre</td>
+          <td><span class="badge badge-green">Réalisé</span></td>
+        </tr>
+        <tr>
+          <td><strong>Réduction du trafic serveur</strong></td>
+          <td>Moins de refroidissement, moins d'énergie</td>
+          <td>Écoresponsabilité de l'hébergement</td>
+          <td>Solution durable, site inchangé</td>
+          <td><span class="badge badge-green">Réalisé</span></td>
+        </tr>
+        <tr>
+          <td><strong>Compression des images</strong></td>
+          <td>3,00 g → 0,60 g CO₂ / visite</td>
+          <td>Fonctionne sur connexions lentes</td>
+          <td>Design maintenu, performance améliorée</td>
+          <td><span class="badge badge-green">Réalisé</span></td>
+        </tr>
+        <tr>
+          <td><strong>Migration hébergeur</strong></td>
+          <td>Énergie renouvelable, bilan carbone datacenter</td>
+          <td>Aucun changement visible</td>
+          <td>Impact structurel, solution pérenne</td>
+          <td><span class="badge badge-red">En cours</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section class="team" id="equipe">
+  <div class="team-inner">
+    <div class="team-header">
+      <div class="section-label">L'équipe</div>
+      <h2 class="section-title">Ctrl + Alt Fix · MI3-5</h2>
+    </div>
+    <div class="team-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="team-card">
+        <div class="team-avatar">IF</div>
+        <div class="team-name">Ibrahim Fridjine</div>
+        <div class="team-role">Analyse HTML</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">MDB</div>
+        <div class="team-name">Maria-Danielle Boula</div>
+        <div class="team-role">Recherche</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">MB</div>
+        <div class="team-name">Myriam Bensaïd</div>
+        <div class="team-role">Présentation</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">TJ</div>
+        <div class="team-name">Tom Jaffrain</div>
+        <div class="team-role">Dev & tests</div>
+      </div>
+    </div>
+    <p style="margin-top: 1.25rem; font-size: 0.82rem; color: var(--muted); font-weight: 300; font-style: italic;">
+      Ambrine Abouni et Wahiba Talankite ont quitté le projet en cours d'année. Le projet a été mené à terme par les quatre membres restants.
+    </p>
+    <div class="energy-section">
+      <div class="energy-title">Modèle énergétique de l'équipe (fin de projet)</div>
+      <div class="energy-bars">
+        <div class="energy-row">
+          <span class="energy-name">Myriam</span>
+          <div class="energy-track"><div class="energy-fill" style="width: 100%;"></div></div>
+          <span class="energy-score">100</span>
+        </div>
+        <div class="energy-row">
+          <span class="energy-name">Ibrahim</span>
+          <div class="energy-track"><div class="energy-fill" style="width: 94%;"></div></div>
+          <span class="energy-score">94</span>
+        </div>
+        <div class="energy-row">
+          <span class="energy-name">Tom</span>
+          <div class="energy-track"><div class="energy-fill" style="width: 92%;"></div></div>
+          <span class="energy-score">92</span>
+        </div>
+        <div class="energy-row">
+          <span class="energy-name">Maria</span>
+          <div class="energy-track"><div class="energy-fill" style="width: 88%;"></div></div>
+          <span class="energy-score">88</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <strong>Éco-Conception Web · Réduction de l'impact environnemental du site CYU</strong><br>
+    Module Humanité & Design · M. Alexandre Bégué · CY Tech PréIng1 2024–2025
+  </div>
+  <div class="footer-right">MI3-5 · CTRL+ALT FIX</div>
+</footer>
+
+</body>
+</html>
