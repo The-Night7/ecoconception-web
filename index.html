@@ -168,6 +168,7 @@
   .problem { background: var(--green-50); }
   .problem-inner { max-width: 1100px; margin: 0 auto; }
   .problem-header { max-width: 640px; margin-bottom: 3.5rem; }
+  .problem-header p { font-size: 0.95rem; color: var(--muted); margin-top: 1rem; font-weight: 300; line-height: 1.7; }
   .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .problem-card {
     background: #fff; border-radius: 1rem; padding: 1.75rem;
@@ -183,12 +184,51 @@
   .problem-card h3 { font-size: 0.95rem; font-weight: 500; color: var(--green-800); margin-bottom: 0.5rem; }
   .problem-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
 
+  /* DEMARCHE */
+  .demarche { background: var(--cream); }
+  .demarche-inner { max-width: 1100px; margin: 0 auto; }
+  .demarche-header { margin-bottom: 3.5rem; }
+  .demarche-header p { font-size: 0.95rem; color: var(--muted); margin-top: 1rem; font-weight: 300; line-height: 1.7; max-width: 680px; }
+  .masterclass-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 3.5rem; }
+  .masterclass-card {
+    background: #fff; border-radius: 1rem; padding: 1.5rem;
+    border: 1px solid var(--green-100);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .masterclass-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(10,26,13,0.07); }
+  .masterclass-num {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    color: var(--green-400); margin-bottom: 0.6rem;
+  }
+  .masterclass-card h3 { font-size: 0.88rem; font-weight: 500; color: var(--green-800); margin-bottom: 0.4rem; }
+  .masterclass-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+  .insight-strip {
+    background: var(--green-800); border-radius: 1.25rem; padding: 2rem 2.5rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    color: var(--green-50);
+  }
+  .insight-item {}
+  .insight-quote {
+    font-family: var(--serif); font-size: 1.1rem; color: var(--lime);
+    font-style: italic; line-height: 1.4; margin-bottom: 0.5rem;
+  }
+  .insight-source { font-family: var(--mono); font-size: 0.68rem; color: var(--green-400); letter-spacing: 0.06em; }
+
   /* ANALYSIS */
-  .analysis { background: var(--cream); }
+  .analysis { background: var(--green-50); }
   .analysis-inner { max-width: 1100px; margin: 0 auto; }
   .analysis-header { margin-bottom: 3.5rem; }
   .analysis-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   .analysis-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.25rem; font-weight: 300; }
+  .analysis-text strong { color: var(--green-700); font-weight: 500; }
+  .analysis-tools {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; margin-bottom: 1.25rem;
+  }
+  .tool-tag {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em;
+    background: var(--green-100); color: var(--green-700);
+    padding: 0.25rem 0.65rem; border-radius: 0.25rem; font-weight: 500;
+  }
   .emissions-panel {
     background: var(--green-800); border-radius: 1.25rem; padding: 2rem;
     color: var(--green-50);
@@ -202,6 +242,13 @@
   .emission-total { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
   .emission-total-val { font-family: var(--serif); font-size: 2.5rem; color: var(--lime); }
   .emission-total-label { font-size: 0.8rem; color: var(--green-200); font-weight: 300; }
+  .donut-note {
+    margin-top: 1.25rem; padding: 1rem 1.25rem;
+    background: rgba(168,216,74,0.08); border-left: 3px solid var(--lime);
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  .donut-note p { font-size: 0.82rem; color: var(--green-200); line-height: 1.6; font-weight: 300; }
+  .donut-note strong { color: var(--lime); font-weight: 500; }
 
   /* SOLUTIONS */
   .solutions { background: var(--green-900); color: var(--green-50); }
@@ -211,7 +258,7 @@
   .solutions-inner { max-width: 1100px; margin: 0 auto; }
   .solutions-header { max-width: 580px; margin-bottom: 3.5rem; }
   .solutions-header p { font-size: 0.95rem; color: var(--green-200); margin-top: 1rem; font-weight: 300; }
-  .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
   .solution-card {
     border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.75rem;
     transition: border-color 0.2s, background 0.2s;
@@ -236,6 +283,15 @@
     padding: 0.2rem 0.55rem; border-radius: 0.25rem;
   }
   .smart-tag.no { background: rgba(255,255,255,0.06); color: var(--green-400); }
+  .labels-strip {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem; padding: 1.5rem 2rem;
+    display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;
+  }
+  .labels-strip-title { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--green-400); flex-shrink: 0; }
+  .label-item { display: flex; flex-direction: column; gap: 0.15rem; }
+  .label-name { font-size: 0.82rem; font-weight: 500; color: var(--green-100); }
+  .label-desc { font-size: 0.75rem; color: var(--green-400); font-weight: 300; }
 
   /* RESULTS */
   .results { background: var(--cream); }
@@ -325,10 +381,11 @@
     .hero-left { padding: 4rem 1.5rem 3rem; }
     .hero-title { font-size: 3rem; }
     section { padding: 4rem 1.5rem; }
-    .problem-grid, .solutions-grid { grid-template-columns: 1fr; }
+    .problem-grid, .solutions-grid, .masterclass-grid { grid-template-columns: 1fr; }
     .analysis-split { grid-template-columns: 1fr; }
     .results-grid { grid-template-columns: repeat(2, 1fr); }
     .team-grid { grid-template-columns: repeat(3, 1fr); }
+    .insight-strip { grid-template-columns: 1fr; }
     footer { padding: 2rem 1.5rem; flex-direction: column; }
   }
 </style>
@@ -339,6 +396,7 @@
   <div class="nav-logo">MI3-5 · CY TECH · 2024–25</div>
   <ul class="nav-links">
     <li><a href="#probleme">Problème</a></li>
+    <li><a href="#demarche">Démarche</a></li>
     <li><a href="#analyse">Analyse</a></li>
     <li><a href="#solutions">Solutions</a></li>
     <li><a href="#resultats">Résultats</a></li>
@@ -352,7 +410,7 @@
   <div class="hero-left">
     <div class="hero-tag fade-up">Humanité & Design · Projet HD</div>
     <h1 class="hero-title fade-up delay-1">Éco-Conception <em>Web</em></h1>
-    <p class="hero-subtitle fade-up delay-2">Réduire l'impact environnemental de l'hébergement du site de CY Cergy Paris Université grâce à une stratégie d'optimisation numérique durable.</p>
+    <p class="hero-subtitle fade-up delay-2">Réduire l'impact environnemental de l'hébergement du site de CY Cergy Paris Université grâce à une stratégie d'optimisation numérique durable — code allégé, hébergeur écoresponsable, accessibilité renforcée.</p>
     <div class="hero-cta fade-up delay-3">
       <a href="#solutions" class="btn-primary">Voir les solutions →</a>
       <a href="#resultats" class="btn-ghost">Résultats obtenus ↓</a>
@@ -375,8 +433,8 @@
           <div class="stat-label">Lignes de code (vs 8 965)</div>
         </div>
         <div class="stat-box">
-          <div class="stat-value">1,12g</div>
-          <div class="stat-label">CO₂ / visite (optimisé)</div>
+          <div class="stat-value">−80%</div>
+          <div class="stat-label">CO₂ via hébergeur vert</div>
         </div>
       </div>
       <div class="hero-card-team">
@@ -393,22 +451,80 @@
     <div class="problem-header">
       <div class="section-label">Contexte</div>
       <h2 class="section-title">Pourquoi agir<br>sur le numérique ?</h2>
+      <p>Le numérique est souvent perçu comme immatériel. Pourtant, chaque octet transféré, chaque serveur alimenté, chaque appareil fabriqué a un coût environnemental réel. Notre projet part de ce constat pour agir à l'échelle d'une université.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="problem-card-icon">🌍</div>
         <h3>4 % de l'empreinte carbone mondiale</h3>
-        <p>Le secteur du numérique représente aujourd'hui environ 4 % des émissions mondiales de CO₂ — autant que l'aviation civile. La moitié vient de la fabrication des appareils, l'autre de leur alimentation électrique.</p>
+        <p>Le secteur du numérique représente environ 4 % des émissions mondiales de CO₂ — autant que l'aviation civile. La moitié provient de la fabrication des appareils et des infrastructures, l'autre de l'électricité nécessaire pour les faire fonctionner.</p>
       </div>
       <div class="problem-card">
         <div class="problem-card-icon">🌐</div>
         <h3>129,6 kg CO₂ / an pour le site de CYU</h3>
-        <p>Avec 10 000 visites mensuelles et 1,08 g de CO₂ émis par visite, le site actuel de CY Cergy Paris Université génère près de 130 kg de CO₂ par an. Un gisement d'amélioration direct et mesurable.</p>
+        <p>Avec 10 000 visites mensuelles et 1,08 g de CO₂ émis par visite, le site actuel de CY Cergy Paris Université génère près de 130 kg de CO₂ par an. Un gisement d'amélioration direct et mesurable, sans modifier le contenu visible.</p>
       </div>
       <div class="problem-card">
         <div class="problem-card-icon">⚖️</div>
         <h3>Enjeux politiques & réglementaires</h3>
-        <p>La loi REEN, le référentiel RGAA et les certifications Green Label Code posent un cadre légal croissant. Les universités publiques ont une responsabilité exemplaire dans la transition numérique.</p>
+        <p>La loi REEN, le référentiel RGAA et les certifications Green Label Code posent un cadre légal croissant. Les universités publiques ont une responsabilité exemplaire dans la transition numérique. La norme ISO 14001 cadre également les systèmes de management environnemental.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DÉMARCHE -->
+<section class="demarche" id="demarche">
+  <div class="demarche-inner">
+    <div class="demarche-header">
+      <div class="section-label">Démarche pédagogique</div>
+      <h2 class="section-title">Un projet ancré dans<br>6 Masterclass</h2>
+      <p>Le projet s'inscrit dans le programme <em>All Aboard Engineering</em> de CY Tech PréIng1. Six masterclasses tout au long de l'année ont nourri notre réflexion sur les enjeux systémiques, économiques et narratifs de la transition écologique.</p>
+    </div>
+    <div class="masterclass-grid">
+      <div class="masterclass-card">
+        <div class="masterclass-num">MASTERCLASS #1</div>
+        <h3>Transition Écologique & Sociale</h3>
+        <p>7 des 9 limites planétaires déjà dépassées. Le numérique exerce une pression directe via le changement climatique et le cycle de l'eau douce (refroidissement des serveurs).</p>
+      </div>
+      <div class="masterclass-card">
+        <div class="masterclass-num">MASTERCLASS #2</div>
+        <h3>L'empreinte carbone</h3>
+        <p>Mesure en CO₂ via les 3 scopes d'émissions et l'ACV (Analyse du Cycle de Vie). Un site mal conçu peut polluer autant qu'un trajet en voiture répété des milliers de fois par an.</p>
+      </div>
+      <div class="masterclass-card">
+        <div class="masterclass-num">MASTERCLASS #3</div>
+        <h3>Économie circulaire</h3>
+        <p>Repenser le cycle de vie du produit numérique : code léger, design modulaire, images compressées. Contrairement au modèle linéaire, l'éco-conception intègre la fin de vie dès la conception.</p>
+      </div>
+      <div class="masterclass-card">
+        <div class="masterclass-num">MASTERCLASS #4</div>
+        <h3>Récits & imaginaires</h3>
+        <p>Notre projet porte un récit de <em>sobriété numérique</em> : montrer qu'un autre web est possible — plus léger, plus accessible, plus respectueux de la planète, sans sacrifier l'utilité.</p>
+      </div>
+      <div class="masterclass-card">
+        <div class="masterclass-num">MASTERCLASS #5</div>
+        <h3>Villes & Changement climatique</h3>
+        <p>L'infrastructure numérique concentrée dans des datacenters urbains contribue au bilan carbone des villes. Relocaliser ou verdir ces infrastructures réduit leur dépendance aux énergies fossiles.</p>
+      </div>
+      <div class="masterclass-card">
+        <div class="masterclass-num">MASTERCLASS #6</div>
+        <h3>Ingénieur & Transition</h3>
+        <p>L'ingénieur de demain est un médiateur entre technologie, écologie et société. Concevoir sobrement, questionner l'utilité de ce qu'on développe : un engagement éthique autant que technique.</p>
+      </div>
+    </div>
+    <div class="insight-strip">
+      <div class="insight-item">
+        <div class="insight-quote">« La manière dont on raconte les choses influence la façon dont on agit. »</div>
+        <div class="insight-source">MC #4 — Récits & imaginaires</div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-quote">« On ne pensait pas que 7 des 9 limites planétaires étaient déjà dépassées. »</div>
+        <div class="insight-source">MC #1 — Transition systémique</div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-quote">« Un site web mal conçu peut polluer beaucoup. On est motivés à concevoir plus sobre. »</div>
+        <div class="insight-source">MC #2 — Empreinte carbone</div>
       </div>
     </div>
   </div>
@@ -424,35 +540,47 @@
     <div class="analysis-split">
       <div class="analysis-text">
         <p>La problématique affinée : <strong>« Quelle stratégie réaliste d'éco-conception peut être mise en œuvre pour réduire l'impact environnemental du site internet de CYU tout en maximisant les bénéfices économiques et sociaux de manière durable ? »</strong></p>
-        <p>En analysant le code HTML du site actuel via l'outil EcoIndex et GTMetrix, nous avons mesuré l'écart considérable entre sa version actuelle — 8 965 lignes de code, 332 Ko, images lourdes — et ce qu'une version éco-conçue pourrait représenter.</p>
-        <p>La méthode SMART nous a permis de structurer trois pistes de résolution : hébergeur écoresponsable, réduction de l'empreinte utilisateur, et optimisation du code. Seule la première et la troisième sont à la fois spécifiques, mesurables, atteignables et réalistes.</p>
-        <p>Le modèle de Kate Raworth (Donut Économique) a guidé notre contextualisation : le projet touche simultanément les plafonds écologiques (changement climatique, énergie) et les planchers sociaux (éducation, inclusion numérique, réseaux).</p>
+        <p>En analysant le code HTML du site actuel via EcoIndex et GTMetrix, nous avons mesuré l'écart considérable entre sa version actuelle — 8 965 lignes de code, 332 Ko, images lourdes — et ce qu'une version éco-conçue pourrait représenter.</p>
+        <div class="analysis-tools">
+          <span class="tool-tag">EcoIndex</span>
+          <span class="tool-tag">GTMetrix</span>
+          <span class="tool-tag">Méthode SMART</span>
+          <span class="tool-tag">ACV</span>
+          <span class="tool-tag">Donut de Raworth</span>
+        </div>
+        <p>La méthode SMART nous a permis de structurer trois pistes de résolution : hébergeur écoresponsable, réduction de l'empreinte utilisateur, et optimisation du code. Seules la première et la troisième sont spécifiques, mesurables, atteignables et réalistes.</p>
+        <p>Le modèle de Kate Raworth (Donut Économique) a guidé notre contextualisation : le projet touche simultanément les plafonds écologiques (changement climatique, énergie) et les planchers sociaux (éducation, inclusion numérique). En éco-concevant le site CYU, on le rend accessible à tous, y compris sur des connexions lentes ou des appareils peu puissants.</p>
       </div>
-      <div class="emissions-panel">
-        <div class="emissions-title">ÉMISSIONS CO₂ · COMPARATIF</div>
-        <div class="emission-row">
-          <span class="emission-label">Site actuel</span>
-          <div class="emission-bar-bg"><div class="emission-bar" style="width: 100%; background: #e26060;"></div></div>
-          <span class="emission-val">1,08 g</span>
-        </div>
-        <div class="emission-row">
-          <span class="emission-label">Après images</span>
-          <div class="emission-bar-bg"><div class="emission-bar" style="width: 55%; background: #e0a050;"></div></div>
-          <span class="emission-val">0,60 g</span>
-        </div>
-        <div class="emission-row">
-          <span class="emission-label">Code minimisé</span>
-          <div class="emission-bar-bg"><div class="emission-bar" style="width: 9%; background: var(--lime);"></div></div>
-          <span class="emission-val">&lt;0,01 g</span>
-        </div>
-        <div class="emission-row">
-          <span class="emission-label">EcoIndex opt.</span>
-          <div class="emission-bar-bg"><div class="emission-bar" style="width: 52%; background: var(--lime);"></div></div>
-          <span class="emission-val">1,12 g</span>
-        </div>
-        <div class="emission-total">
-          <div class="emission-total-val">−51 %</div>
-          <div class="emission-total-label">de réduction atteinte · version optimisée vs version actuelle</div>
+      <div>
+        <div class="emissions-panel">
+          <div class="emissions-title">ÉMISSIONS CO₂ · COMPARATIF</div>
+          <div class="emission-row">
+            <span class="emission-label">Site actuel</span>
+            <div class="emission-bar-bg"><div class="emission-bar" style="width: 100%; background: #e26060;"></div></div>
+            <span class="emission-val">1,08 g</span>
+          </div>
+          <div class="emission-row">
+            <span class="emission-label">Après images</span>
+            <div class="emission-bar-bg"><div class="emission-bar" style="width: 55%; background: #e0a050;"></div></div>
+            <span class="emission-val">0,60 g</span>
+          </div>
+          <div class="emission-row">
+            <span class="emission-label">Code minimisé</span>
+            <div class="emission-bar-bg"><div class="emission-bar" style="width: 9%; background: var(--lime);"></div></div>
+            <span class="emission-val">&lt;0,01 g</span>
+          </div>
+          <div class="emission-row">
+            <span class="emission-label">EcoIndex opt.</span>
+            <div class="emission-bar-bg"><div class="emission-bar" style="width: 52%; background: var(--lime);"></div></div>
+            <span class="emission-val">1,12 g</span>
+          </div>
+          <div class="emission-total">
+            <div class="emission-total-val">−51 %</div>
+            <div class="emission-total-label">de réduction atteinte · version optimisée vs version actuelle</div>
+          </div>
+          <div class="donut-note">
+            <p><strong>Hébergeur vert :</strong> migrer vers un datacenter alimenté aux énergies renouvelables peut réduire jusqu'à <strong>80 %</strong> de l'empreinte carbone résiduelle du site, selon les études ACV sectorielles.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -465,13 +593,13 @@
     <div class="solutions-header">
       <div class="section-label">Pistes de résolution</div>
       <h2 class="section-title">Trois stratégies évaluées</h2>
-      <p>Chaque piste a été évaluée selon les critères SMART. Deux ont été retenues et combinées dans notre solution finale.</p>
+      <p>Chaque piste a été évaluée selon les critères SMART. Deux ont été retenues et combinées dans notre solution finale, la troisième écartée pour des raisons de faisabilité.</p>
     </div>
     <div class="solutions-grid">
       <div class="solution-card featured">
         <div class="solution-num">01</div>
         <h3>Hébergeur écoresponsable</h3>
-        <p>Migrer vers un hébergeur alimenté aux énergies renouvelables (o2switch, Infomaniak, Planet Hoster, Ex2). Délai estimé : 2 à 3 mois. Mesurable via l'empreinte carbone du datacenter.</p>
+        <p>Migrer vers un hébergeur alimenté aux énergies renouvelables (o2switch, Infomaniak, Planet Hoster, Ex2). Délai estimé : 2 à 3 mois. Réduction potentielle de 80 % de l'empreinte carbone du datacenter. Aucun changement visible pour l'utilisateur.</p>
         <div class="smart-tags">
           <span class="smart-tag">S ✓</span>
           <span class="smart-tag">M ✓</span>
@@ -483,7 +611,7 @@
       <div class="solution-card">
         <div class="solution-num">02</div>
         <h3>Réduction côté utilisateur</h3>
-        <p>Agir sur les comportements de navigation pour limiter la consommation. Non retenue : il est impossible de forcer les utilisateurs à consommer moins, et la temporalité est difficile à définir.</p>
+        <p>Agir sur les comportements de navigation pour limiter la consommation. Non retenue : il est impossible de contraindre les utilisateurs à consommer moins, et la temporalité est indéfinissable. Les critères S, R et T ne sont pas satisfaits.</p>
         <div class="smart-tags">
           <span class="smart-tag no">S ✗</span>
           <span class="smart-tag">M ✓</span>
@@ -495,7 +623,7 @@
       <div class="solution-card featured">
         <div class="solution-num">03</div>
         <h3>Optimisation du code</h3>
-        <p>Minimisation du HTML/CSS/JS et compression des images. Passage de 332 Ko à 1 Ko. Réduction de 99,7 % du poids de la page, sans modifier le contenu visible.</p>
+        <p>Minimisation du HTML/CSS/JS, compression des images (WebP), design minimaliste, réduction des requêtes HTTP. Passage de 332 Ko à 1 Ko. Réduction de 99,7 % du poids de la page. Accessibilité renforcée sur connexions lentes et appareils anciens.</p>
         <div class="smart-tags">
           <span class="smart-tag">S ✓</span>
           <span class="smart-tag">M ✓</span>
@@ -503,6 +631,29 @@
           <span class="smart-tag">R ✓</span>
           <span class="smart-tag">T ✓</span>
         </div>
+      </div>
+    </div>
+    <div class="labels-strip">
+      <div class="labels-strip-title">CADRES & LABELS</div>
+      <div class="label-item">
+        <span class="label-name">Label Green Code</span>
+        <span class="label-desc">Référentiel français d'éco-conception web</span>
+      </div>
+      <div class="label-item">
+        <span class="label-name">Référentiel Green IT</span>
+        <span class="label-desc">Bonnes pratiques numériques responsables</span>
+      </div>
+      <div class="label-item">
+        <span class="label-name">ISO 14001</span>
+        <span class="label-desc">Management environnemental international</span>
+      </div>
+      <div class="label-item">
+        <span class="label-name">Loi REEN</span>
+        <span class="label-desc">Réduction de l'empreinte environnementale du numérique</span>
+      </div>
+      <div class="label-item">
+        <span class="label-name">RGAA</span>
+        <span class="label-desc">Accessibilité des services publics numériques</span>
       </div>
     </div>
   </div>
@@ -547,28 +698,28 @@
         <tr>
           <td><strong>Minimisation du code HTML/CSS/JS</strong></td>
           <td>332 Ko → 1 Ko · 0,30 g → &lt;0,01 g CO₂</td>
-          <td>Chargement plus rapide, infos mises en avant</td>
+          <td>Chargement plus rapide, fonctionne sur connexions lentes</td>
           <td>Accessibilité renforcée, version ultra-sobre</td>
           <td><span class="badge badge-green">Réalisé</span></td>
         </tr>
         <tr>
-          <td><strong>Réduction du trafic serveur</strong></td>
-          <td>Moins de refroidissement, moins d'énergie</td>
-          <td>Écoresponsabilité de l'hébergement</td>
-          <td>Solution durable, site inchangé</td>
-          <td><span class="badge badge-green">Réalisé</span></td>
-        </tr>
-        <tr>
-          <td><strong>Compression des images</strong></td>
+          <td><strong>Compression des images (WebP)</strong></td>
           <td>3,00 g → 0,60 g CO₂ / visite</td>
-          <td>Fonctionne sur connexions lentes</td>
-          <td>Design maintenu, performance améliorée</td>
+          <td>Fonctionne sur connexions lentes, design maintenu</td>
+          <td>Performance améliorée, qualité visuelle préservée</td>
           <td><span class="badge badge-green">Réalisé</span></td>
         </tr>
         <tr>
-          <td><strong>Migration hébergeur</strong></td>
-          <td>Énergie renouvelable, bilan carbone datacenter</td>
-          <td>Aucun changement visible</td>
+          <td><strong>Réduction des requêtes HTTP</strong></td>
+          <td>Moins d'allers-retours serveur, moins d'énergie</td>
+          <td>Temps de réponse réduit</td>
+          <td>Performance globale améliorée</td>
+          <td><span class="badge badge-green">Réalisé</span></td>
+        </tr>
+        <tr>
+          <td><strong>Migration hébergeur écoresponsable</strong></td>
+          <td>Énergie renouvelable · −80 % empreinte datacenter</td>
+          <td>Aucun changement visible pour l'utilisateur</td>
           <td>Impact structurel, solution pérenne</td>
           <td><span class="badge badge-red">En cours</span></td>
         </tr>
@@ -598,7 +749,7 @@
       <div class="team-card">
         <div class="team-avatar">MB</div>
         <div class="team-name">Myriam Bensaïd</div>
-        <div class="team-role">Présentation</div>
+        <div class="team-role">Coordination générale</div>
       </div>
       <div class="team-card">
         <div class="team-avatar">TJ</div>
